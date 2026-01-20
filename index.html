@@ -280,7 +280,11 @@
         case DIR.LEFT:  move(DIR.LEFT);  break;
         case DIR.RIGHT: move(DIR.RIGHT); break;
         case DIR.UP:    rotate();        break;
-        case DIR.DOWN:  drop();          break;
+        case DIR.DOWN:  
+          // MODIFIED: Loop until collision (Hard Drop)
+          while(move(DIR.DOWN)) { addScore(1); }
+          drop(); 
+          break;
       }
     }
 
